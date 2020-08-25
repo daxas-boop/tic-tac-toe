@@ -22,18 +22,6 @@ const game = (function (){
         player2 = player(input2.value,[],false);
     }
 
-    
-    function blockInputs() {
-        $divs.forEach( div => {
-            div.addEventListener('click', e => {});
-        });
-    }
-    
-    function changeTurn(){
-        player1.turn = !player1.turn
-        player2.turn = !player2.turn
-    }
-    
     function saveInputs(e) {
         let errorCounter = 0;
         let clickedBox = Number(e.target.dataset.number)
@@ -51,19 +39,35 @@ const game = (function (){
             }
             player2.inputs.push(clickedBox)
             gameboard.push(clickedBox)
+            console.log(player2)
         }
-       
+        
         return errorCounter;
     }
 
+    function blockInputs() {
+        $divs.forEach( div => {
+            div.onclick = () => {};
+        });
+    }
+    
+    function changeTurn(){
+        player1.turn = !player1.turn
+        player2.turn = !player2.turn
+    }
+    
     function checkWin() {
-        let winningCombinations = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8],[3,6,9], [1,5,9], [3,5,7]];
-        // check if player1.input or player2.input contains one of the winning combinations
-        for(let i = 0; i < winningCombinations.length; i++){
+        const WINNER_COMBO = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8],[3,6,9], [1,5,9], [3,5,7]];
+        let winner = false;
+        for(let i = 0; i < WINNER_COMBO.length; i++){
             let checker = (arr, target) => target.every(v => arr.includes(v));
-            let result = (checker(player1.inputs, winningCombinations[i])) // if 1 of this is true return true
-            console.log(result);
+            let winnerPlayer1 = (checker(player1.inputs, WINNER_COMBO[i]));
+            let winnerPlayer2 = (checker(player2.inputs, WINNER_COMBO[i]));
+            if( winnerPlayer1 || winnerPlayer2 ){
+                winner = true;
+            }
         }
+        return winner;
     }
 
     function checkDraw() {
@@ -75,64 +79,52 @@ const game = (function (){
     
     function startGame() {
         $divs.forEach( div => {
-            div.addEventListener('click', e => {
-                let noErrors = saveInputs(e) === 0;
-                if(noErrors) {
-                    changeTurn();
-                    let win = checkWin();
-                    if(win){
-                        winGame();
-                        endGame();
-                    }
-                    let draw = checkDraw();
-                    if(draw){
-                        drawGame();
-                        endGame();
-                    }
-                }
-            });
+            div.onclick = handlePlay;
         });
     }
 
+    function handlePlay(e){
+        let noErrors = saveInputs(e) === 0; 
+        if(noErrors) {
+            let win = checkWin();
+            if(win){
+                winGame();
+                endGame();
+                return;
+            }
+            let draw = checkDraw();
+            if(draw){
+                drawGame();
+                endGame();
+                return;
+            }
+            changeTurn();
+        }
+    }
+
+    function resetPlayers(){
+        player1 = undefined;
+        player2 = undefined;
+        gameboard = [];
+    }
+
     function drawGame() {
-        // show draw
+        alert('DRAW')
     }
 
     function winGame() {
-        // show win
+        let winner;
+        let player1Won = player1.turn === true;
+        let player2Won = player2.turn === true;
+        if(player1Won) winner = player1.name;
+        if(player2Won) winner = player2.name;
+
+        alert(`the winner is ${winner}`);
     }
 
     function endGame() {
-        // reset players
-        // block inputs
         blockInputs();
-        // wait for new players to submit
+        resetPlayers();
     }
 
 })();
-
-
-// como verificar si hay un ganador 
-// como terminar el juego ¿como borrar player1/player2 objects?
-
-// crear jugador1 y jugador2 al apretar empezar
-// van a tener una propiedad donde ingresar el nombre, y una propiedad para guardar sus inputs
-// mostrar donde van a jugar
-// elementos que devuelvan 1 al 9
-// decir que el jugador1 tiene que jugar
-// esperar que el jugador1 haga click
-// guardar el input del jugador1 en su propio array y en el del juego
-// verificar si hay un ganador
-// decir que el jugador2 tiene que jugar
-// verificar que el jugador2 no clickeo en donde el jugador 1 ya habia clickeado
-// guardar el input del jugador2 en su propio array y en el del juego
-// verificar si hay un ganador
-// repetir hasta tener un ganador o empatar
-// 8 opciones de ganar si no hay ganador cuando el array tenga 8 es empate
-
-
-// Como verificar si hay un ganador?
-// si el array cualquiera de algun jugador contiene los elementos: 
-// [1,2,3] [4,5,6] [7,8,9]
-// [1,4,7] [2,5,8] [3,6,9]
-// [1,5,9] [3,5,7]
