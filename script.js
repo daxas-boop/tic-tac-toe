@@ -15,6 +15,8 @@ const game = (function (){
     $submit.addEventListener('click', () => {
         addPlayers($input1, $input2);
         startGame();
+        resetClass();
+        showPlayerTurn();
     });
     
     function addPlayers(input1, input2) {
@@ -32,14 +34,12 @@ const game = (function (){
             }    
             player1.inputs.push(clickedBox)
             gameboard.push(clickedBox)
-            console.log(player1)
         } else if (player2.turn) {
             if (gameboard.includes(clickedBox)){
                 return ++errorCounter
             }
             player2.inputs.push(clickedBox)
             gameboard.push(clickedBox)
-            console.log(player2)
         }
         
         return errorCounter;
@@ -83,9 +83,33 @@ const game = (function (){
         });
     }
 
+    function renderGameboard(e) {
+        let player1Turn = player1.turn === true;
+        let player2Turn = player2.turn === true;
+        let target = e.target;
+
+        if (player1Turn) {
+            target.classList.add('x')
+        }
+
+        if (player2Turn){
+            target.classList.add('o')
+        }
+    }
+
+    function showPlayerTurn(){
+        let player1Turn = player1.turn === true;
+        let player2Turn = player2.turn === true;
+        const $playerTurn = document.querySelector('#players-turn');
+
+        player1Turn ? $playerTurn.innerText = `I'ts ${player1.name} turn` : $playerTurn.innerText = `I'ts ${player2.name} turn`
+    }
+
     function handlePlay(e){
         let noErrors = saveInputs(e) === 0; 
         if(noErrors) {
+            renderGameboard(e);
+            showPlayerTurn();
             let win = checkWin();
             if(win){
                 winGame();
@@ -118,8 +142,15 @@ const game = (function (){
         let player2Won = player2.turn === true;
         if(player1Won) winner = player1.name;
         if(player2Won) winner = player2.name;
+        setTimeout(()=>{
+            alert(`the winner is ${winner}`);
+        } , 100)
+    }
 
-        alert(`the winner is ${winner}`);
+    function resetClass(){
+        $divs.forEach( div => {
+            div.className = 'box';
+        });
     }
 
     function endGame() {
@@ -128,3 +159,8 @@ const game = (function (){
     }
 
 })();
+
+
+// players turn
+// error if name === '' or longer than..
+// page UI
