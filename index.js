@@ -1,5 +1,5 @@
-import verifyPlayersName from  './verifyPlayerName.js';
-import {renderGameboard} from './ui.js'
+import verifyPlayersName from  './script/verifyPlayerName.js';
+import {renderGameboard} from './script/ui.js'
 export {player1,player2}
 
 let gameboard = [];
