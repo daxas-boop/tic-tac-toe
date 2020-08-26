@@ -1,4 +1,4 @@
-import {player1,player2} from './index.js';
+import {player1,player2} from '../index.js';
 
 export function handleErrors(errors) {
     let keys = Object.keys(errors)
