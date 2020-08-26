@@ -1,27 +1,48 @@
+html{
+    height: 100%;
+}
+
 body{
-    padding-top: 10%;
-    padding-bottom: 7%;
+    height: 95%;
+    padding-bottom: 45px;
+    padding-left: 270px;
+    box-sizing:border-box;
 }
 
-#form{
-    position: fixed;
-    top:0;
-    margin: 0 auto;
-}
-
-#gameboard{
-    width: 400px;
-    height: 400px;
-    display:flex;
+.sidenav {
+    height: 100%;
+    width: 260px; 
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    background-color: #bbbdbc; 
+    padding-top: 20px;
+    display: flex;
     flex-wrap: wrap;
+}
+
+#form {
+    top: 40px;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#game-container {
+    height: 80%;
+}
+
+#gameboard {
+    width: 60%;
+    height: 100%;
+    display: grid;
     margin: auto;
-    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
 }
 
 .box {
-    margin: 10px;
-    width: 110px;
-    height: 110px;
     border-radius: 5px;
     border: 1px solid black;
 } 
@@ -40,4 +61,30 @@ body{
 
 #players-turn {
     text-align: center;
+}
+
+.error {
+    border: 2px solid red;
+}
+
+#errors {
+    color:brown;
+    margin: 0;
+    padding: 0;
+}
+
+#errors > li {
+    list-style: none;
+    margin: 10px;
+    font-family: monospace;
+}
+
+#footer {
+    height: 40px; 
+    width: 100%; 
+    position: fixed; 
+    bottom: 0; 
+    left: 0;
+    z-index: 1;
+    background-color: #6d9c9c; 
 }
