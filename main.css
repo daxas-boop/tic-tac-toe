@@ -208,6 +208,7 @@ body{
     #game-container {
         margin: 0 auto;
         display: block;
+        height: 692px;
     }
 
     #gameboard{
@@ -217,7 +218,7 @@ body{
 
     body{
         height: 100%;
-        padding-bottom: 6%;
+        padding-bottom: 53px;
         padding-top: 0%;
         padding-left: 0%;
         margin: 0;
@@ -226,6 +227,7 @@ body{
     #footer{
         position: relative;
         left: 0%;
+        height: 53px;
     }
 
     #errors > li {
