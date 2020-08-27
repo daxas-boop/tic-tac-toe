@@ -16,11 +16,12 @@ export function handleErrors(errors) {
         if (error) {
             errorCounter++;
             $form[key].classList.add('error');
-            let $error = document.createElement('li');
-            $error.innerText = error;
-            $errors.appendChild($error);
+            key += '-error';
+            document.querySelector(`#${key}`).innerText = error;
         } else {
             $form[key].classList.remove('error');
+            key += '-error';
+            document.querySelector(`#${key}`).innerText = '';
         }
     });
 
