@@ -7,6 +7,7 @@ body{
     padding-bottom: 45px;
     padding-left: 20%;
     box-sizing:border-box;
+    background: linear-gradient(90deg, rgba(156, 172, 201, 0.69) 0%, rgba(68, 100, 149, 0.69) 100%);
 }
 
 .sidenav {
@@ -15,7 +16,7 @@ body{
     position: fixed; 
     top: 0; 
     left: 0;
-    background-color: #bbbdbc; 
+    background: rgba(52, 73, 94,0.6); 
     padding-top: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -51,20 +52,28 @@ body{
     outline:none;
 }
 
+#form small {
+    color:rgb(255, 115, 72);
+    font-size: 12px;
+    display: inline-block;
+}
+
 #submit {
     font-family: sans-serif;
     font-weight: bold;
+    font-size: 16px;
     margin: 10px;
-    padding: 4px 10px;
+    padding: 5px 10px;
     color: white;
-    background-color: rgb(125, 15, 153);
-    border: 1px solid rgb(125, 15, 153);
+    background-color: rgb(218, 31, 31);
+    border: 1px solid rgb(218, 31, 31);
+    border-radius: 3px;
     cursor: pointer;
 }
 
 #submit:hover,
 #submit:active{
-    background-color: rgb(134, 71, 149);
+    background-color: rgb(251, 121, 98);
 }
 
 #submit:focus{
@@ -88,7 +97,7 @@ body{
 }
 
 #gameboard > div {
-    border: 2px solid #6d9c9c;
+    border: 2px solid #3a5353;
 }
 
 .box:hover {
@@ -103,7 +112,7 @@ body{
 }
 
 .o{
-   background-image: url('images/o.jpg');
+   background-image: url('images/Oo.png');
    background-repeat: no-repeat;
    background-size: contain;
    background-position: center;
@@ -118,7 +127,7 @@ body{
 }
 
 #errors {
-    color:brown;
+    color:rgb(255, 208, 0);
     margin: 0;
     padding: 0;
 }
@@ -155,9 +164,9 @@ body{
     width: 100%; 
     position: fixed; 
     bottom: 0; 
-    left: 0;
+    left: 10%;
     z-index: 1;
-    background-color: #6d9c9c; 
+    background: rgba(52, 73, 94,0);
     display:flex;
     justify-content: center;
 }
@@ -182,26 +191,41 @@ body{
 @media only screen and (max-width: 600px) {
     .sidenav{
         width: 100%;
-        height: 28%;
-        position: fixed; 
+        height: 25%;
+        position: relative; 
         top: 0; 
-        background-color: #bbbdbc; 
         display: flex;
         flex-wrap: wrap;
         padding:0;
         box-sizing: border-box;
     }
 
+    #submit {
+        margin: 0;
+    }
+
+
     #game-container {
         margin: 0 auto;
         display: block;
     }
 
+    #gameboard{
+        box-sizing: border-box;
+        height: 90%;
+    }
+
     body{
-        height: 95%;
-        padding-bottom: 0%;
-        padding-top: 50%;
-        padding-left: 5%;
+        height: 100%;
+        padding-bottom: 6%;
+        padding-top: 0%;
+        padding-left: 0%;
+        margin: 0;
+    }
+
+    #footer{
+        position: relative;
+        left: 0%;
     }
 
     #errors > li {
@@ -210,6 +234,9 @@ body{
     }
 
     #form label {
-        margin: 0;
+        margin: 5px;
+    }
+    #form input{
+        margin: 5px;
     }
 }
