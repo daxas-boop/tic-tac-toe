@@ -18,20 +18,20 @@ export default function verifyPlayersName(input1, input2) {
 
 function verifyPlayer1Name(player1Name) {
     if (player1Name.length === 0) {
-        return 'Player 1 name is empty. Please enter a valid name'
+        return 'El nombre del jugador 1 esta vacío. Por favor ingrese un nombre'
     }
     if (player1Name.length > 15) {
-        return 'Player 1 name needs to have less than 15 characters. Please enter a valid name'
+        return 'El nombre del jugador 1 tiene que tener menos de 15 caracteres.'
     }
     return '';
 }
 
 function verifyPlayer2Name(player2Name) {
     if (player2Name.length === 0) {
-        return 'Player 2 name is empty. Please enter a valid name'
+        return 'El nombre del jugador 2 esta vacío. Por favor ingrese un nombre'
     }
     if (player2Name.length > 15) {
-        return 'Player 2 name needs to have less than 15 characters. Please enter a valid name'
+        return 'El nombre del jugador 2 tiene que tener menos de 15 caracteres.'
     }
     return '';
 }
