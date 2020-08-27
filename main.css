@@ -5,13 +5,13 @@ html{
 body{
     height: 95%;
     padding-bottom: 45px;
-    padding-left: 270px;
+    padding-left: 20%;
     box-sizing:border-box;
 }
 
 .sidenav {
     height: 100%;
-    width: 260px; 
+    width: 20%; 
     position: fixed; 
     top: 0; 
     left: 0;
@@ -23,40 +23,90 @@ body{
 
 #form {
     top: 40px;
-    margin: 10px auto;
+    margin: 0 auto;
+    width: 100%;
+    height: 50%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+#form label {
+    min-width: 90%;
+    max-width: 90%;
+    margin-top: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+#form input {
+    min-width: 90%;
+    max-width: 90%;
+    padding: 4px 2px;
+    border-radius: 5px;
+    border:1px solid grey;
+}
+
+#form input:focus{
+    outline:none;
+}
+
+#submit {
+    font-family: sans-serif;
+    font-weight: bold;
+    margin: 10px;
+    padding: 4px 10px;
+    color: white;
+    background-color: rgb(125, 15, 153);
+    border: 1px solid rgb(125, 15, 153);
+    cursor: pointer;
+}
+
+#submit:hover,
+#submit:active{
+    background-color: rgb(134, 71, 149);
+}
+
+#submit:focus{
+    outline: none;
 }
 
 #game-container {
+    width: 100%;
     height: 80%;
+    position: relative;
 }
 
 #gameboard {
-    width: 60%;
+    width: 65%;
     height: 100%;
     display: grid;
     margin: auto;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: 10px;
+    position: relative;
 }
 
-.box {
-    border-radius: 5px;
-    border: 1px solid black;
-} 
+#gameboard > div {
+    border: 2px solid #6d9c9c;
+}
 
 .box:hover {
     cursor: pointer;
 }
 
 .x{
-    background-color: black;
+    background-image: url('images/Xx.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .o{
-    background-color: blue;
+   background-image: url('images/o.jpg');
+   background-repeat: no-repeat;
+   background-size: contain;
+   background-position: center;
 }
 
 #players-turn {
@@ -64,7 +114,7 @@ body{
 }
 
 .error {
-    border: 2px solid red;
+    border: 2px solid red !important;
 }
 
 #errors {
@@ -76,15 +126,90 @@ body{
 #errors > li {
     list-style: none;
     margin: 10px;
-    font-family: monospace;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+
+.hidden {
+    display: none;
+}
+
+#popup {
+    width: 90%;
+    position: absolute;
+    background-color: khaki;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    top:40%;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+    box-sizing:border-box;
 }
 
 #footer {
-    height: 40px; 
+    height: 6%; 
     width: 100%; 
     position: fixed; 
     bottom: 0; 
     left: 0;
     z-index: 1;
     background-color: #6d9c9c; 
+    display:flex;
+    justify-content: center;
+}
+
+#social-container {
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+}
+
+#social-container h3{
+    padding: 0;
+    margin: 0;
+    align-self: center;
+}
+
+#social-container a {
+    align-self: center;
+    margin: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .sidenav{
+        width: 100%;
+        height: 28%;
+        position: fixed; 
+        top: 0; 
+        background-color: #bbbdbc; 
+        display: flex;
+        flex-wrap: wrap;
+        padding:0;
+        box-sizing: border-box;
+    }
+
+    #game-container {
+        margin: 0 auto;
+        display: block;
+    }
+
+    body{
+        height: 95%;
+        padding-bottom: 0%;
+        padding-top: 50%;
+        padding-left: 5%;
+    }
+
+    #errors > li {
+        font-size: 0.7rem;
+        margin: 3px;
+    }
+
+    #form label {
+        margin: 0;
+    }
 }
