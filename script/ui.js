@@ -7,8 +7,6 @@ let $turn = document.querySelector('#players-turn');
 export function handleErrors(errors) {
     let keys = Object.keys(errors)
     const $form = document.querySelector('#form');
-    const $errors = document.querySelector('#errors');
-    $errors.innerHTML = '';
     let errorCounter = 0;
 
     keys.forEach( key => {
