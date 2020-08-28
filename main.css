@@ -208,7 +208,7 @@ body{
     #game-container {
         margin: 0 auto;
         display: block;
-        height: 692px;
+        height: 90vh;
     }
 
     #gameboard{
