@@ -12,3 +12,6 @@ Lets you play a tic tac toe game with your friend.
 
 ## Dependecies
 - [http-server](https://github.com/http-party/http-server)
+
+### TO DO
+- [ ]  Create an AI so that a player can play against the computer.
